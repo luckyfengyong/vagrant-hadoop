@@ -1,0 +1,9 @@
+.vagrant/*
+resources/hadoop-2.6.0.tar.gz
+resources/hbase-0.98.9-hadoop2-bin.tar.gz
+resources/jdk-8u25-linux-x64.tar.gz
+resources/zookeeper-3.4.6.tar.gz
+resources/apache-ant-1.9.4-bin.zip
+resources/apache-maven-3.2.5-bin.zip
+resources/spark-1.2.0-bin-hadoop2.4.tgz
+resources/scala-2.11.4.tgz
