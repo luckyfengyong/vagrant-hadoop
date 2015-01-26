@@ -259,6 +259,14 @@ slider create openlava --template $SLIDER_PREFIX/app-packages/openlava/appConfig
 
 Refer to http://www.openlava.org/ for how OpenLava works
 
+####Exported Data
+
+Check exported openlava master host and mbd port.
+
+```
+slider registry --name openlava --getexp servers
+```
+
 ## Run SparkR on YARN
 
 SSH into node2 and run the following commands.
