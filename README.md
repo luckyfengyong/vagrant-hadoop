@@ -183,70 +183,11 @@ hbase(main):001:0> list
 
 SSH into node2 and run the following commands to create Openlava cluster.
 
-####Create a Label Directory in HDFS.
+####Create a parent znode for openlava clusters in Zookeeper.
 
 ```
-hadoop fs -mkdir -p /yarn/node-labels
-hadoop fs -chown -R yarn:yarn /yarn
-hadoop fs -chmod -R 700 /yarn
+echo "create /openlava parent_znode" | zkCli.sh -server node2:2181
 ```
-
-You can use command ```hadoop fs -ls /yarn``` to confirm that the directory was created.
-
-####Configure YARN for Node Labels.
-
-Add the following properties to "$HADOOP_CONF_DIR/yarn-site.xml" file.
-
-```
-<property>
-    <name>yarn.node-labels.manager-class</name>
-    <value>org.apache.hadoop.yarn.server.resourcemanager.nodelabels.RMNodeLabelsManager</value>
-</property>
-<property>
-    <name>yarn.node-labels.fs-store.root-dir</name>
-    <value>hdfs://node1:8020/yarn/node-labels/</value>
-</property>
-```
-
-Stop and restart YARN ResourceManager.
-
-```
-$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR stop resourcemanager
-$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
-```
-
-####Add and Assign Node Labels.
-
-Add two node lables "x" and "y". You can have your own node labels.
-
-```
-yarn rmadmin -addToClusterNodeLabels "x,y"
-```
-	  
-Assign node labels to cluster nodes: assign label "x" to "node3"; assign label "y" to "node4". 
-
-```
-yarn rmadmin -replaceLabelsOnNode "node3,x node4,y"
-```
-
-####Association Node Labels with Queues.
-
-Add following properties to "$HADOOP_CONF_DIR/capacity-scheduler.xml" file.
-
-```
-<property>
-    <name>yarn.scheduler.capacity.root.accessible-nodelabels.x.capacity</name>
-    <value>100</value>
-</property>
-<property>
-    <name>yarn.scheduler.capacity.root.accessible-nodelabels.y.capacity</name>
-    <value>100</value>
-</property>
-```
-
-Refresh Queues by running command ```yarn rmadmin -refreshQueues```.
-
-Confirm Node Label assignment by running command ```yarn node -status $Node-Id```.
 
 ####Create openlava Cluster by Slider.
 

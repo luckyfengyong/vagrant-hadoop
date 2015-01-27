@@ -53,10 +53,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				s.args = "-s 3 -t #{numNodes}"
 			end
 			if i == 2
-                node.vm.provision "shell", path: "scripts/setup-zookeeper.sh"
+				node.vm.provision "shell", path: "scripts/setup-zookeeper.sh"
+			else
+				node.vm.provision "shell", path: "scripts/setup-zookeeper-client.sh"
+			end
+			if i == 2            
                 node.vm.provision "shell", path: "scripts/setup-slider.sh"
 				node.vm.provision "shell", path: "scripts/setup-spark.sh"
-			end            
+			end          
 		end
 	end
 end
