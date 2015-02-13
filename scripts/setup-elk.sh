@@ -6,19 +6,6 @@ source "/vagrant/scripts/common.sh"
 #http://wiki.nginx.org/Install
 #http://www.elasticsearch.org/overview/kibana/installation/
 
-#logstash
-LOGSTASH_VERSION=logstash-1.4.2
-LOGSTASH_ARCHIVE=$LOGSTASH_VERSION.tar.gz
-LOGSTASH_MIRROR_DOWNLOAD=https://download.elasticsearch.org/logstash/logstash/$LOGSTASH_ARCHIVE
-#elasticsearch
-ELASTICSEARCH_VERSION=elasticsearch-1.4.2
-ELASTICSEARCH_ARCHIVE=$ELASTICSEARCH_VERSION.tar.gz
-ELASTICSEARCH_MIRROR_DOWNLOAD=https://download.elasticsearch.org/elasticsearch/elasticsearch/$ELASTICSEARCH_ARCHIVE
-#kibana
-KIBANA_VERSION=kibana-3.1.2
-KIBANA_ARCHIVE=$KIBANA_VERSION.tar.gz
-KIBANA_MIRROR_DOWNLOAD=https://download.elasticsearch.org/kibana/kibana/$KIBANA_ARCHIVE
-
 function installLogstash {
 	echo "install logstash"
 	FILE=/vagrant/resources/$LOGSTASH_ARCHIVE
