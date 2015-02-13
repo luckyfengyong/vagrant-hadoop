@@ -60,7 +60,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			if i == 2            
                 node.vm.provision "shell", path: "scripts/setup-slider.sh"
 				node.vm.provision "shell", path: "scripts/setup-spark.sh"
-			end          
+				node.vm.provision "shell", path: "scripts/setup-elk.sh"
+			end
+			node.vm.provision "shell", path: "scripts/setup-metrics.sh"
 		end
 	end
 end
