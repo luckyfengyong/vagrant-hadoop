@@ -86,4 +86,4 @@ pending_jobs    #openlava
 ```
 
 ## View metrics from Kibana 
-Access Kibana dashboards at "http://node2/kibana"
+Access Kibana dashboards at http://node2/kibana
