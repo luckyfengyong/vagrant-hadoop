@@ -7,15 +7,15 @@ By combining Logstash, Elasticsearch, Kibana (ELK) and Nginx to create an end-to
 
 We have been collecting metrics from YARN (running_apps + pending_apps) and openlava cluster (running_jobs + pending_jobs). More metrics can be added easily through providing: i) a script to collect metrics and dump to a file; and ii) a logstash filter to parse the metrics. All these metrics collection aims at helping on auto-scaling among multi-tenant clusters.
 
-## Metrics watch environment is setup as follows:
+## Metrics-watch environment is setup as follows:
 
 1. node2: logstash + elasticsearch + kibana + nginx
-2. node2-node5: metrics collector
+2. node2 - node5: metrics collector
 
 ## How metrics-watch works
 
-1. Metrics collector monitors and collects metrics and persist to files on HDFS/NFS/S3, etc. Collector on resource manager (node2) reports the metrics from YARN. Collector on openlava master host reports the metrics from openlava cluster.
-2. Logstash reads metrics data from files, parse and store them into Elasticsearch.
+1. Metrics collector collects metrics data periodically and persists to files on HDFS/NFS/S3, etc. Collector on resource manager (node2) reports the metrics from YARN. Collector on openlava master host reports the metrics from openlava cluster.
+2. Logstash creates a pipeline for receiving metrics data from files, processing and outputting structured data into Elasticsearch.
 3. Kibana is metrics visualization engine, allowing viewing Elasticsearch's metrics via custom dashboards.
 4. Nginx is the webserver for kibana.
 
@@ -49,7 +49,7 @@ If you want to stop metrics collector, run following command.
 /vagrant/metrics/bin/stopAll.sh >/dev/null 2>&1
 ```
 
-## Start Logstash to store metrics in Elasticsearch
+## Start Logstash for storing metrics with Elasticsearch
 
 ```
 /usr/local/logstash/bin/logstash -f /usr/local/metrics/logstash-conf/logstash-elasticsearch.conf & >/dev/null 2>&1
@@ -72,7 +72,7 @@ curl -XPOST 'localhost:9200/logstash-2015.02.13/_search?pretty' -d '
 }'
 ```
 
-We support following search filed currently. More fields can be added via adding to logstash filter.
+Refer to http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/search.html for more search APIs. We support following search filed currently. More fields can be added via adding to logstash filter.
 
 ```
 timestamp
@@ -85,4 +85,5 @@ running_jobs    #openlava
 pending_jobs    #openlava
 ```
 
-## View metrics from Kibana from "http://node2/kibana"
+## View metrics from Kibana 
+Access Kibana dashboards at "http://node2/kibana"
