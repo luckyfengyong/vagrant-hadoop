@@ -7,33 +7,20 @@ function installLocalJava {
 	tar -xzf $FILE -C /usr/local
 }
 
-function installRemoteJava {
-	echo "install open jdk"
-	yum install -y java-1.7.0-openjdk.x86_64
-    yum install -y java-1.7.0-openjdk-devel.x86_64
-}
-
 function setupJava {
 	echo "setting up java"
-	if resourceExists $JAVA_ARCHIVE; then
-		ln -s /usr/local/jdk1.7.0_51 /usr/local/java
-	else
-		ln -s /usr/lib/jvm/jre /usr/local/java
-	fi
+	ln -s /usr/local/jdk1.7.0_75 /usr/local/java
 }
 
 function setupEnvVars {
 	echo "creating java environment variables"
 	echo export JAVA_HOME=/usr/local/java >> /etc/profile.d/java.sh
 	echo export PATH=\${JAVA_HOME}/bin:\${PATH} >> /etc/profile.d/java.sh
+	chmod +x /etc/profile.d/java.sh
 }
 
 function installJava {
-	if resourceExists $JAVA_ARCHIVE; then
-		installLocalJava
-	else
-		installRemoteJava
-	fi
+	installLocalJava
 }
 
 #  How to install ant and maven by http://www.unixmen.com/install-apache-ant-maven-tomcat-centos-76-5/
@@ -82,11 +69,6 @@ function setupMavenEnvVars {
     chmod +x /etc/profile.d/maven.sh
 }
 
-function installR {
-	echo "install R"
-	yum install -y R
-}
-
 function installrJava {
 	echo "install rJava"
 	FILE=/vagrant/resources/$RJAVA_ARCHIVE
@@ -101,5 +83,4 @@ installAnt
 setupAntEnvVars
 installMaven
 setupMavenEnvVars
-installR
-installrJava
+#installrJava

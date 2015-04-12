@@ -28,8 +28,22 @@ function setupHosts {
 	#cat /etc/hosts >> /etc/nhosts
 	cp /etc/nhosts /etc/hosts
 	rm -f /etc/nhosts
+	/usr/sbin/useradd -p '$6$uOoy/tgo$fKttIIzBINTQOKQqt9WJ1z/UK4OHrHi0vka27h9KgNZCo9ey5SCOtw5ChCutZ8LxwGubRwVFNpPf1ZgxHTN.l.' demo
+	# gpasswd -a demo docker
+	# mkdir /root/.ssh
+	/bin/cp -f /vagrant/resources/ssh/id_rsa /root/.ssh/
+	/bin/cp -f /vagrant/resources/ssh/authorized_keys /root/.ssh/
+	/bin/cp -f /vagrant/resources/ssh/config /root/.ssh
+	chmod 0600 /root/.ssh/*
+	mkdir -p /home/demo/.ssh
+	/bin/cp -f /vagrant/resources/ssh/id_rsa.demo /home/demo/.ssh/id_rsa
+	/bin/cp -f /vagrant/resources/ssh/authorized_keys.demo /home/demo/.ssh/authorized_keys
+	/bin/cp -f /vagrant/resources/ssh/config /home/demo/.ssh
+	chmod 0600 /home/demo/.ssh/*
+	chown -R demo:demo /home/demo
+	chown -R demo:demo /home/demo/.ssh
 }
 
 
-echo "setup centos hosts file"
+echo "setup ubuntu hosts file"
 setupHosts

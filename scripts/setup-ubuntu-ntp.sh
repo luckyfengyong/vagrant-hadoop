@@ -4,7 +4,6 @@ source "/vagrant/scripts/common.sh"
 
 function setupNTPCronJob {
     echo "add hourly cron job of ntpupdate"
-    yum -y install ntp
     echo '#!/bin/sh' > /etc/cron.hourly/ntpdate
     echo 'ntpdate time.apple.com' >> /etc/cron.hourly/ntpdate
     chmod 755 /etc/cron.hourly/ntpdate
