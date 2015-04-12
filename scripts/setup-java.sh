@@ -2,14 +2,13 @@
 source "/vagrant/scripts/common.sh"
 
 function installLocalJava {
-	echo "installing open jdk from local file"
 	FILE=/vagrant/resources/$JAVA_ARCHIVE
 	tar -xzf $FILE -C /usr/local
 }
 
 function setupJava {
 	echo "setting up java"
-	ln -s /usr/local/jdk1.7.0_75 /usr/local/java
+	ln -s /usr/local/jdk1.7.0_76 /usr/local/java
 }
 
 function setupEnvVars {
@@ -20,6 +19,12 @@ function setupEnvVars {
 }
 
 function installJava {
+	if resourceExists $JAVA_ARCHIVE; then
+		echo "installing open jdk from local file"
+	else
+		wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u76-b13/jdk-7u76-linux-x64.tar.gz" -O /vagrant/resources/$JAVA_ARCHIVE
+	fi
+	
 	installLocalJava
 }
 

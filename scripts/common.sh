@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #java
-JAVA_ARCHIVE=jdk-7u75-linux-x64.tar.gz
+JAVA_ARCHIVE=jdk-7u76-linux-x64.tar.gz
 #ant
 ANT_ARCHIVE=apache-ant-1.9.4-bin.zip
 #maven
