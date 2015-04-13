@@ -32,8 +32,7 @@ function installElasticsearch {
 
 function installNginx {
 	echo "install nginx"
-	cp /vagrant/resources/nginx.repo /etc/yum.repos.d/
-	yum install -y nginx
+	apt-get -y install nginx
 }
 
 function installKibana {

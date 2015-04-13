@@ -2,7 +2,7 @@ Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-	numNodes = 3
+	numNodes = 4
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "node#{i}" do |node|
@@ -48,9 +48,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			if i == 2            
                 node.vm.provision "shell", path: "scripts/setup-slider.sh"
 				node.vm.provision "shell", path: "scripts/setup-spark.sh"
-				# node.vm.provision "shell", path: "scripts/setup-elk.sh"
+				node.vm.provision "shell", path: "scripts/setup-elk.sh"
 			end
-			# node.vm.provision "shell", path: "scripts/setup-metrics.sh"
+			node.vm.provision "shell", path: "scripts/setup-metrics.sh"
 		end
 	end
 end

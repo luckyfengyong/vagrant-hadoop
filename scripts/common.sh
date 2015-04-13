@@ -58,10 +58,17 @@ HBASE_ARCHIVE=$HBASE_VERSION-bin.tar.gz
 HBASE_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hbase/stable/$HBASE_ARCHIVE
 HBASE_RES_DIR=/vagrant/resources/hbase
 #logstash
-
+LOGSTASH_ARCHIVE=logstash-1.4.2.tar.gz
+LOGSTASH_MIRROR_DOWNLOAD=https://download.elasticsearch.org/logstash/logstash/$LOGSTASH_ARCHIVE
+LOGSTASH_VERSION=logstash-1.4.2
 #elasticsearch
-
+ELASTICSEARCH_ARCHIVE=elasticsearch-1.5.1.tar.gz
+ELASTICSEARCH_MIRROR_DOWNLOAD=https://download.elasticsearch.org/elasticsearch/elasticsearch/$ELASTICSEARCH_ARCHIVE
+ELASTICSEARCH_VERSION=elasticsearch-1.5.1
 #kibana
+KIBANA_ARCHIVE=kibana-4.0.2-linux-x64.tar.gz
+KIBANA_MIRROR_DOWNLOAD=https://download.elasticsearch.org/kibana/$KIBANA_ARCHIVE
+KIBANA_VERSION=kibana-4.0.2-linux-x64
 
 function resourceExists {
 	FILE=/vagrant/resources/$1

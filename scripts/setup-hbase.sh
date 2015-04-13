@@ -33,22 +33,22 @@ function installHBase {
 		installRemoteHBase
 	fi
 	ln -s /usr/local/$HBASE_VERSION /usr/local/hbase
-    mkdir /usr/local/hbase/hadooplibbackup
-	mv /usr/local/hbase/lib/hadoop* /usr/local/hbase/hadooplibbackup/
-    cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-api-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-client-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-common-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-server-common-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-server-nodemanager-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-common-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-app-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop/share/hadoop/hdfs/hadoop-hdfs-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop-2.6.0/share/hadoop/common/lib/hadoop-auth-2.6.0.jar /usr/local/hbase/lib/
-    cp /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/lib/hadoop-annotations-2.6.0.jar /usr/local/hbase/lib/
-    cp /vagrant/resources/hadoop-client-2.6.0.jar /usr/local/hbase/lib/
+    #mkdir /usr/local/hbase/hadooplibbackup
+	#mv /usr/local/hbase/lib/hadoop* /usr/local/hbase/hadooplibbackup/
+    #cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-api-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-client-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-common-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-server-common-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-server-nodemanager-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-common-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-app-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop/share/hadoop/hdfs/hadoop-hdfs-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop-2.6.0/share/hadoop/common/lib/hadoop-auth-2.6.0.jar /usr/local/hbase/lib/
+    #cp /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/lib/hadoop-annotations-2.6.0.jar /usr/local/hbase/lib/
+    #cp /vagrant/resources/hadoop-client-2.6.0.jar /usr/local/hbase/lib/
 }
 
 
