@@ -44,7 +44,9 @@ function installKibana {
 		curl -o $FILE -O -L $KIBANA_MIRROR_DOWNLOAD
 	fi
 	tar -xzf $FILE -C /usr/local
-	ln -s /usr/local/$KIBANA_VERSION /usr/share/nginx/html/kibana
+	ln -s /usr/local/$KIBANA_VERSION /usr/local/kibana
+	ln -s /usr/local/kibana /usr/share/nginx/html/kibana
+	/usr/local/kibana/bin/kibana &
 }
 
 echo "setup ELK"
