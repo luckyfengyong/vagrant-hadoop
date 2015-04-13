@@ -67,7 +67,7 @@ ELASTICSEARCH_MIRROR_DOWNLOAD=https://download.elasticsearch.org/elasticsearch/e
 ELASTICSEARCH_VERSION=elasticsearch-1.5.1
 #kibana
 KIBANA_ARCHIVE=kibana-4.0.2-linux-x64.tar.gz
-KIBANA_MIRROR_DOWNLOAD=https://download.elasticsearch.org/kibana/$KIBANA_ARCHIVE
+KIBANA_MIRROR_DOWNLOAD=https://download.elasticsearch.org/kibana/kibana/$KIBANA_ARCHIVE
 KIBANA_VERSION=kibana-4.0.2-linux-x64
 
 function resourceExists {
