@@ -44,7 +44,7 @@ If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfil
 You can make the VM setup even faster if you pre-download the Hadoop ... and Oracle JDK into the /resources directory.
 
 * /resources/hadoop-2.6.0.tar.gz
-* /resources/jdk-7u75-linux-x64.tar.gz
+* /resources/jdk-7u76-linux-x64.tar.gz
 * ....
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
