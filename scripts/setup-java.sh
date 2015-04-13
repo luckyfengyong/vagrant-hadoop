@@ -9,6 +9,10 @@ function installLocalJava {
 function setupJava {
 	echo "setting up java"
 	ln -s /usr/local/jdk1.7.0_76 /usr/local/java
+	ln -s /usr/local/java/bin/java /usr/bin/java
+	ln -s /usr/local/java/bin/javac /usr/bin/javac
+	ln -s /usr/local/java/bin/jar /usr/bin/jar
+	ln -s /usr/local/java/bin/javah /usr/bin/javah
 }
 
 function setupEnvVars {
@@ -77,6 +81,7 @@ function setupMavenEnvVars {
 function installrJava {
 	echo "install rJava"
 	FILE=/vagrant/resources/$RJAVA_ARCHIVE
+	R CMD javareconf
 	R CMD INSTALL $FILE
 }
 
@@ -88,4 +93,4 @@ installAnt
 setupAntEnvVars
 installMaven
 setupMavenEnvVars
-#installrJava
+installrJava
