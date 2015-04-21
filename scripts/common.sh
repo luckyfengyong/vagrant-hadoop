@@ -16,7 +16,8 @@ HADOOP_PREFIX=/usr/local/hadoop
 HADOOP_CONF=$HADOOP_PREFIX/etc/hadoop
 HADOOP_VERSION=hadoop-2.6.0
 HADOOP_ARCHIVE=$HADOOP_VERSION.tar.gz
-HADOOP_MIRROR_DOWNLOAD=http://www.gtlib.gatech.edu/pub/apache/hadoop/common/hadoop-2.6.0/$HADOOP_ARCHIVE
+#HADOOP_MIRROR_DOWNLOAD=http://www.gtlib.gatech.edu/pub/apache/hadoop/common/hadoop-2.6.0/$HADOOP_ARCHIVE
+HADOOP_MIRROR_DOWNLOAD=http://www.apache.org/dist/hadoop/core/hadoop-2.6.0/$HADOOP_ARCHIVE
 HADOOP_RES_DIR=/vagrant/resources/hadoop
 #zookeeper
 ZOOKEEPER_PREFIX=/usr/local/zookeeper
