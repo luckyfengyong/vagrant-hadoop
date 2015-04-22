@@ -137,16 +137,6 @@ slider destroy memcached
 
 Refer to http://slider.incubator.apache.org/docs/troubleshooting.html for troubleshooting of slider
 
-## Start HBase (If choose to install HBase on HDFS directly)
-
-SSH into node2 and run the following commands to start HBase cluster.
-
-```
-start-hbase.sh
-```
-
-Access HBase GUI at http://10.211.55.102:60010/master-status to verify HBase cluster
-
 ## Create HBase Cluster by Slider
 
 SSH into node2 and run the following commands to create HBase cluster.

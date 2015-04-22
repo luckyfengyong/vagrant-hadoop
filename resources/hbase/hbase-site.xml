@@ -39,4 +39,8 @@
     <name>hbase.zookeeper.quorum</name>
     <value>node2</value>
   </property>
+  <property>
+	<name>zookeeper.znode.parent</name>
+	<value>/services/slider/users/root/hbase</value>
+  </property>
 </configuration>
