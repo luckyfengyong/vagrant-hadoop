@@ -8,3 +8,7 @@ resources/apache-maven-3.2.5-bin.zip
 resources/spark-1.3.0-bin-hadoop2.4.tgz
 resources/scala-2.11.6.tgz
 resources/SparkR-pkg-master.zip
+resources/kibana-4.0.2-linux-x64.tar.gz
+resources/elasticsearch-1.5.1.tar.gz
+resources/logstash-1.4.2.tar.gz
+metrics/data/yarn
