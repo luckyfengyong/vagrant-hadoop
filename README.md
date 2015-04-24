@@ -3,7 +3,7 @@ vagrant-hadoop-2.7.0
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.70.1 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -142,7 +142,7 @@ Refer to http://slider.incubator.apache.org/docs/troubleshooting.html for troubl
 SSH into node2 and run the following commands to create HBase cluster.
 
 ```
-slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-0.70.1-incubating.zip
+slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-0.60.0-incubating.zip
 slider create hbase --template $SLIDER_PREFIX/app-packages/hbase/appConfig-hbase.json --resources $SLIDER_PREFIX/app-packages/hbase/resources-hbase.json
 ```
 
