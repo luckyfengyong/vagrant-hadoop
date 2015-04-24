@@ -1,9 +1,9 @@
-vagrant-hadoop-2.6.0
+vagrant-hadoop-2.7.0
 ================================
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.6.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -43,7 +43,7 @@ If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfil
 # Make the VMs setup faster
 You can make the VM setup even faster if you pre-download the Hadoop ... and Oracle JDK into the /resources directory.
 
-* /resources/hadoop-2.6.0.tar.gz
+* /resources/hadoop-2.7.0.tar.gz
 * /resources/jdk-7u76-linux-x64.tar.gz
 * ....
 
@@ -77,13 +77,13 @@ $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP
 Run the following command to make sure you can run a MapReduce job.
 
 ```
-yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.0.jar pi 2 100
+yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar pi 2 100
 ```
 
 Run the following command to make sure you can run the YRAN distributedshell example.
 
 ```
-hadoop org.apache.hadoop.yarn.applications.distributedshell.Client -jar /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-2.6.0.jar -shell_command "sleep 100000" -num_containers 10 -timeout 200000000
+hadoop org.apache.hadoop.yarn.applications.distributedshell.Client -jar /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-2.7.0.jar -shell_command "sleep 100000" -num_containers 10 -timeout 200000000
 ```
 
 ## Start Zookeeper

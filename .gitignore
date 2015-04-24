@@ -1,5 +1,6 @@
 .vagrant/*
 resources/hadoop-2.6.0.tar.gz
+resources/hadoop-2.7.0.tar.gz
 resources/hbase-1.0.0-bin.tar.gz
 resources/jdk-7u76-linux-x64.tar.gz
 resources/zookeeper-3.4.6.tar.gz
