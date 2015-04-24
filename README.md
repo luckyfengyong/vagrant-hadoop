@@ -3,7 +3,7 @@ vagrant-hadoop-2.7.0
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.70.1 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -142,7 +142,7 @@ Refer to http://slider.incubator.apache.org/docs/troubleshooting.html for troubl
 SSH into node2 and run the following commands to create HBase cluster.
 
 ```
-slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-0.60.0-incubating.zip
+slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-0.70.1-incubating.zip
 slider create hbase --template $SLIDER_PREFIX/app-packages/hbase/appConfig-hbase.json --resources $SLIDER_PREFIX/app-packages/hbase/resources-hbase.json
 ```
 
@@ -186,7 +186,7 @@ slider install-package --name OPENLAVA --package $SLIDER_PREFIX/app-packages/ope
 slider create openlava --template $SLIDER_PREFIX/app-packages/openlava/appConfig-openlava.json --resources $SLIDER_PREFIX/app-packages/openlava/resources-openlava.json
 ```
 
-####Verify openlava
+#### Verify openlava
 
 Refer to http://www.openlava.org/ for how OpenLava works
 
@@ -197,6 +197,41 @@ Check exported openlava master host and mbd port.
 ```
 slider registry --name openlava --getexp servers
 ```
+
+## Build Slider
+
+1) Build instructions
+http://slider.incubator.apache.org/developing/building.html
+
+2) Fix build error
+
+a) To fix dependency unresolved, use following command to build
+
+```
+mvn clean site:site site:stage package -DskipTests -Prelease-2.6
+```
+
+b) Cannot find org.apache.commons.lang.StringUtils, common-lang.jar is missing in the default installation of Apache Maven 3.0.5, fix it as beblow:
+
+```
+cd /usr/share/maven/lib
+sudo ln -s ../../java/commons-lang.jar .
+```
+ 
+3) Build Hbase application package
+
+Follow readme in app-packages/hbase, make sure add "-Prelease-2.6" and "-DskipTests" in build command
+
+## Slider Material
+
+1) Training slides
+http://www.slideshare.net/duttashivaji/apache-slider
+
+2) website
+http://slider.incubator.apache.org/
+
+3) JIRA
+https://issues.apache.org/jira/browse/SLIDER/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel
 
 ## Run SparkR on YARN
 
