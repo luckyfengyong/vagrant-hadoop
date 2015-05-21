@@ -233,6 +233,22 @@ http://slider.incubator.apache.org/
 3) JIRA
 https://issues.apache.org/jira/browse/SLIDER/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel
 
+## Run Spark on YARN
+
+SSH into node2 and run the following commands.
+
+```
+spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi lib/spark-examples-1.3.0-hadoop2.4.0.jar 100
+```
+
+Please refer to following link for how spark cluster runs with a resource manager.
+
+https://spark.apache.org/docs/latest/cluster-overview.html
+
+Please refer to following link for how resource is scheduled among applications, for an application and among jobs within an application.
+
+https://spark.apache.org/docs/latest/job-scheduling.html
+
 ## Run SparkR on YARN
 
 SSH into node2 and run the following commands.
