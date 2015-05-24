@@ -3,7 +3,7 @@ vagrant-hadoop-2.7.0
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -280,6 +280,10 @@ For example
 ```
 MASTER=yarn-client SPARK_WORKER_INSTANCES=4 sparkR
 ```
+
+## Metrics Watch
+
+Please refer to directory of metrics for details
 
 # Trouble-shooting YARN
 
