@@ -238,7 +238,7 @@ https://issues.apache.org/jira/browse/SLIDER/?selectedTab=com.atlassian.jira.jir
 SSH into node2 and run the following commands.
 
 ```
-spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi lib/spark-examples-1.3.0-hadoop2.4.0.jar 100
+spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi $SPARK_HOME/lib/spark-examples-1.3.0-hadoop2.4.0.jar 100
 ```
 
 Please refer to following link for how spark cluster runs with a resource manager.
