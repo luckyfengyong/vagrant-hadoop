@@ -249,6 +249,22 @@ Please refer to following link for how resource is scheduled among applications,
 
 https://spark.apache.org/docs/latest/job-scheduling.html
 
+## Run Spark Streaming on YARN
+
+SSH into node2 and run the following commands to start a Netcat as a simple data service.
+
+```
+nc -lk 9999
+```
+
+SSH into node2 and run the following commands to start example of NetworkWordCount
+
+```
+run-example streaming.NetworkWordCount localhost 9999
+```
+
+After that go back to first console and type the words to count. Please refer to https://spark.apache.org/docs/latest/streaming-programming-guide.html for more examples and programming guide.
+
 ## Run SparkR on YARN
 
 SSH into node2 and run the following commands.
