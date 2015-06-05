@@ -173,24 +173,24 @@ hbase(main):001:0> list
 
 SSH into node2 and run the following commands to create Openlava cluster.
 
-####Create a parent znode for openlava clusters in Zookeeper.
+###Create a parent znode for openlava clusters in Zookeeper.
 
 ```
 echo "create /openlava parent_znode" | zkCli.sh -server node2:2181
 ```
 
-####Create openlava Cluster by Slider.
+### Create openlava Cluster by Slider.
 
 ```
 slider install-package --name OPENLAVA --package $SLIDER_PREFIX/app-packages/openlava/openlava-2.2.zip
 slider create openlava --template $SLIDER_PREFIX/app-packages/openlava/appConfig-openlava.json --resources $SLIDER_PREFIX/app-packages/openlava/resources-openlava.json
 ```
 
-#### Verify openlava
+### Verify openlava
 
 Refer to http://www.openlava.org/ for how OpenLava works
 
-####Exported Data
+### Exported Data
 
 Check exported openlava master host and mbd port.
 
@@ -296,6 +296,21 @@ For example
 ```
 MASTER=yarn-client SPARK_WORKER_INSTANCES=4 sparkR
 ```
+
+## Build Spark and/or Spark Example
+
+SSH into node2 and run the following commands to prepare the Spark git repository
+
+```
+cd /usr/local/src/
+git clone git://git.apache.org/spark.git  spark.git
+git checkout -b branch-1.3 --track origin/branch-1.3
+cd spark.git/examples
+cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory of examples, so it fails to only build spark examples.
+../build/mvn -DskipTests clean package
+```
+
+Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
 
 ## Metrics Watch
 
