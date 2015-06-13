@@ -3,9 +3,11 @@
 #java
 JAVA_ARCHIVE=jdk-7u76-linux-x64.tar.gz
 #ant
-ANT_ARCHIVE=apache-ant-1.9.4-bin.zip
+ANT_ARCHIVE=apache-ant-1.9.5-bin.zip
+ANT_MIRROR_DOWNLOAD=http://mirror.sdunix.com/apache/ant/binaries/$ANT_ARCHIVE
 #maven
 MAVEN_ARCHIVE=apache-maven-3.2.5-bin.zip
+MAVEN_MIRROR_DOWNLOAD=http://apache.mirror.rafal.ca/maven/maven-3/3.2.5/binaries/$MAVEN_ARCHIVE
 #ssh
 SSH_RES_DIR=/vagrant/resources/ssh
 RES_SSH_COPYID_ORIGINAL=$SSH_RES_DIR/ssh-copy-id.original

@@ -40,10 +40,10 @@ function installAnt {
     if resourceExists $ANT_ARCHIVE; then
 		echo "install Ant from local file"
 	else
-		curl -o $FILE -O -L http://mirror.sdunix.com/apache/ant/binaries/apache-ant-1.9.4-bin.zip
+		curl -o $FILE -O -L $ANT_MIRROR_DOWNLOAD
 	fi
     unzip $FILE -d /usr/local
-    ln -s /usr/local/apache-ant-1.9.4 /usr/local/ant
+    ln -s /usr/local/apache-ant-1.9.5 /usr/local/ant
     ln -s /usr/local/ant/bin/ant /usr/bin/ant
 }
 
@@ -62,7 +62,7 @@ function installMaven {
     if resourceExists $MAVEN_ARCHIVE; then
 		echo "install Maven from local file"
 	else
-		curl -o $FILE -O -L http://apache.mirror.rafal.ca/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.zip
+		curl -o $FILE -O -L $MAVEN_MIRROR_DOWNLOAD
 	fi
     unzip $FILE -d /usr/local
     ln -s /usr/local/apache-maven-3.2.5 /usr/local/maven
@@ -80,6 +80,7 @@ function setupMavenEnvVars {
 
 function installrJava {
 	echo "install rJava"
+	source /etc/profile
 	FILE=/vagrant/resources/$RJAVA_ARCHIVE
 	R CMD javareconf
 	R CMD INSTALL $FILE
