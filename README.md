@@ -310,7 +310,13 @@ cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory 
 ../build/mvn -DskipTests clean package
 ```
 
+```
+spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.3.2-SNAPSHOT.jar /vagrant/resources/poc
+```
+
 Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
+
+Please refer to https://spark.apache.org/docs/latest/streaming-programming-guide.html for more details how to program Spark Streaming
 
 ## Metrics Watch
 
