@@ -3,7 +3,7 @@ vagrant-hadoop-2.7.0
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.3.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.0.0 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.4.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.1.1 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -107,6 +107,27 @@ Or Run following command to send command to Zookeeper. Refer to https://zookeepe
 echo ruok | nc node2 2181
 ```
 
+## Start HBase
+
+SSH into node2 and run the following command to start HBase
+
+```
+start-hbase.sh
+```
+
+Access http://node2:16030/master-status for HBase admin GUI. Please refer to http://hbase.apache.org/book.html for reference documentation of HBase
+
+### Test HBsae
+
+Run the following commands to make sure you can create hbase table. Refer to http://wiki.apache.org/hadoop/Hbase/Shell for more hbase shell commands
+
+```
+hbase shell
+hbase(main):001:0> list
+hbase(main):002:0> create 'test','column1'
+hbase(main):001:0> list
+```
+
 ## Verify Slider
 
 SSH into node2 and run the following commands to create a sample application to verify Slider. Refer to http://slider.incubator.apache.org/docs/manpage.html for more details about Slider.
@@ -142,7 +163,7 @@ Refer to http://slider.incubator.apache.org/docs/troubleshooting.html for troubl
 SSH into node2 and run the following commands to create HBase cluster.
 
 ```
-slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-0.60.0-incubating.zip
+slider install-package --name HBASE --package $SLIDER_PREFIX/app-packages/hbase/slider-hbase-app-package-1.0.1.1-bin.zip
 slider create hbase --template $SLIDER_PREFIX/app-packages/hbase/appConfig-hbase.json --resources $SLIDER_PREFIX/app-packages/hbase/resources-hbase.json
 ```
 
@@ -304,7 +325,7 @@ SSH into node2 and run the following commands to prepare the Spark git repositor
 ```
 cd /usr/local/src/
 git clone git://git.apache.org/spark.git  spark.git
-git checkout -b branch-1.3 --track origin/branch-1.3
+git checkout -b branch-1.4 --track origin/branch-1.4
 cd spark.git/examples
 cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory of examples, so it fails to only build spark examples.
 ../build/mvn -DskipTests clean package
