@@ -51,4 +51,18 @@
   <name>yarn.nodemanager.delete.debug-delay-sec</name>
   <value>36000</value>
  </property>
+ <property>
+  <name>hadoop.registry.zk.quorum</name>
+  <value>node2:2181</value>
+  <description>List of hostname:port pairs defining the zookeeper quorum binding for the registry
+  </description>
+ </property>
+ <property>
+  <name>hadoop.registry.rm.enabled</name>
+  <value>true</value>
+  <description>Is the registry enabled: does the RM start it up, create the user
+        and system paths, and purge service records when containers, application attempts
+        and applications complete?
+  </description>
+ </property>
 </configuration>
