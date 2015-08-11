@@ -36,9 +36,9 @@ SCALA_RES_DIR=/vagrant/resources/scala
 RJAVA_VERSION=rJava_0.9-6
 RJAVA_ARCHIVE=$RJAVA_VERSION.tar.gz
 #spark
-SPARK_VERSION=spark-1.4.0-bin-hadoop2.6
+SPARK_VERSION=spark-1.4.1-bin-hadoop2.6
 SPARK_ARCHIVE=$SPARK_VERSION.tgz
-SPARK_MIRROR_DOWNLOAD=http://www.apache.org/dist/spark/spark-1.4.0/$SPARK_ARCHIVE
+SPARK_MIRROR_DOWNLOAD=http://www.apache.org/dist/spark/spark-1.4.1/$SPARK_ARCHIVE
 SPARK_RES_DIR=/vagrant/resources/spark
 #sparkR
 SPARKR_ARCHIVE=sparkr.zip

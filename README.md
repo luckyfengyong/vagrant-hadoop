@@ -336,7 +336,7 @@ cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory 
 ```
 
 ```
-spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.3.2-SNAPSHOT.jar /vagrant/resources/poc
+spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.3.2-SNAPSHOT.jar /user/root/poc/
 ```
 
 Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
@@ -367,6 +367,7 @@ You can check the following URLs to monitor the Hadoop daemons.
 1. [NameNode] (http://10.211.55.101:50070/dfshealth.html)
 2. [ResourceManager] (http://10.211.55.102:8088/cluster)
 3. [JobHistory] (http://10.211.55.102:19888/jobhistory)
+4. [Spark] (http://node2:4040)
 
 # Vagrant boxes
 A list of available Vagrant boxes is shown at http://www.vagrantbox.es. 
