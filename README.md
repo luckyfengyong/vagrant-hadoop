@@ -3,7 +3,7 @@ vagrant-hadoop-2.7.0
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.4.0, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.1.1 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.4.1, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.1.1 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -336,7 +336,7 @@ cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory 
 ```
 
 ```
-spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.3.2-SNAPSHOT.jar /user/root/poc/
+spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.4.2-SNAPSHOT.jar /user/root/poc/
 ```
 
 Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
