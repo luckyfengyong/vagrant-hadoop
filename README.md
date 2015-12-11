@@ -1,9 +1,9 @@
-vagrant-hadoop-2.7.0
+vagrant-hadoop-2.7.1
 ================================
 
 # Introduction
 
-Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Zookeeper v3.4.6, Spark v1.4.1, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.1.1 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
+Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.1, Zookeeper v3.4.6, Spark v1.5.2, SparkR and Slider 0.60.0 incubating (with application packages of hbase v1.1.1 and OpenLava v2.2). Java/Ant/Maven/Scala/R/Docker environment is setup in all the nodes. A metric watch baesd on ELK is installed to collect metrics of YARN and OpenLava.
 
 1. node1 : HDFS NameNode 
 2. node2 : YARN ResourceManager + JobHistoryServer + ProxyServer + Zookeeper Server + Slider + Spark + SparkR (+ optional HBase Master)
@@ -25,7 +25,7 @@ Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.0, Z
 
 Some gotcha's.
 
-* Make sure you download Vagrant v1.7.1 or higher and VirtualBox 4.3.20 or higher with extension package
+* Make sure you download Vagrant v1.7.4 or higher and VirtualBox 5.0 or higher with extension package
 * Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters. If you are using Windows, please make sure the following configuration is configured in your .gitconfig file which is located in your home directory ("C:\Users\yourname" in Win7 and after, and "C:\Documents and Settings\yourname" in WinXP). Refer to http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration for details of git configuration.
 ```
 [core]
@@ -43,7 +43,7 @@ If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfil
 # Make the VMs setup faster
 You can make the VM setup even faster if you pre-download the Hadoop ... and Oracle JDK into the /resources directory.
 
-* /resources/hadoop-2.7.0.tar.gz
+* /resources/hadoop-2.7.1.tar.gz
 * /resources/jdk-7u76-linux-x64.tar.gz
 * ....
 
@@ -77,13 +77,13 @@ $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP
 Run the following command to make sure you can run a MapReduce job.
 
 ```
-yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar pi 2 100
+yarn jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar pi 2 100
 ```
 
 Run the following command to make sure you can run the YRAN distributedshell example.
 
 ```
-hadoop org.apache.hadoop.yarn.applications.distributedshell.Client -jar /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-2.7.0.jar -shell_command "sleep 100000" -num_containers 10 -timeout 200000000
+hadoop org.apache.hadoop.yarn.applications.distributedshell.Client -jar /usr/local/hadoop/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-2.7.1.jar -shell_command "sleep 100000" -num_containers 10 -timeout 200000000
 ```
 
 ## Start Zookeeper
@@ -258,12 +258,16 @@ http://slider.incubator.apache.org/
 3) JIRA
 https://issues.apache.org/jira/browse/SLIDER/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel
 
+## Install Jaguar
+
+### Install 
+
 ## Run Spark on YARN
 
 SSH into node2 and run the following commands.
 
 ```
-spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi $SPARK_HOME/lib/spark-examples-1.3.0-hadoop2.4.0.jar 100
+spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi $SPARK_HOME/lib/spark-examples-1.5.2-hadoop2.6.0.jar 100
 ```
 
 Please refer to following link for how spark cluster runs with a resource manager.
@@ -329,14 +333,14 @@ SSH into node2 and run the following commands to prepare the Spark git repositor
 ```
 cd /usr/local/src/
 git clone git://git.apache.org/spark.git  spark.git
-git checkout -b branch-1.4 --track origin/branch-1.4
+git checkout -b v1.5.2 tags/v1.5.2
 cd spark.git/examples
 cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory of examples, so it fails to only build spark examples.
 ../build/mvn -DskipTests clean package
 ```
 
 ```
-spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.4.2-SNAPSHOT.jar /user/root/poc/
+spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.5.2.jar /user/root/poc/
 ```
 
 Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
@@ -374,6 +378,18 @@ A list of available Vagrant boxes is shown at http://www.vagrantbox.es.
 
 # Vagrant box location
 The Vagrant box is downloaded to the ~/.vagrant.d/boxes directory. On Windows, this is C:/Users/{your-username}/.vagrant.d/boxes.
+
+# Install AWS S3 tools
+https://github.com/s3tools/s3cmd/blob/master/INSTALL
+```
+apt-get install python-setuptools
+wget https://github.com/s3tools/s3cmd/archive/master.zip
+unzip ./master.zip
+cd s3cmd-master/
+python setup.py install
+s3cmd --configure
+s3cmd sync s3://bucket/folder /localfolder
+```
 
 # Copyright Stuff
 Copyright 2015

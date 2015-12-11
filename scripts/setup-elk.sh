@@ -28,6 +28,8 @@ function installElasticsearch {
 	fi
 	tar -xzf $FILE -C /usr/local
 	ln -s /usr/local/$ELASTICSEARCH_VERSION /usr/local/elasticsearch
+	# install marvel plugin
+	/usr/local/elasticsearch/bin/plugin -i elasticsearch/marvel/latest
 }
 
 function installNginx {

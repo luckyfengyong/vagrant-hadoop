@@ -53,7 +53,7 @@ function sshCopyId {
 	echo "executing ssh-copy-id"
 	for i in $(seq $START $TOTAL_NODES)
 	do 
-		node="mesosnode${i}"
+		node="node${i}"
 		echo "copy ssh key to ${node}"
 		ssh-copy-id -i ~/.ssh/id_rsa.pub $node
 	done

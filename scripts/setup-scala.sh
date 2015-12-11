@@ -18,6 +18,11 @@ function installScala {
 	fi
 	tar -xzf $FILE -C /usr/lib
 	ln -s /usr/lib/$SCALA_VERSION /usr/lib/scala
+
+	# install sbt http://www.scala-sbt.org/release/tutorial/Installing-sbt-on-Linux.html
+	echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+    apt-get update -y
+    apt-get install -y sbt
 }
 
 echo "setup scala"

@@ -38,6 +38,8 @@ function installHadoop {
 		installRemoteHadoop
 	fi
 	ln -s /usr/local/$HADOOP_VERSION /usr/local/hadoop
+	# install elasticsearch-sink
+	cp /vagrant/resources/hadoop-metrics-elasticsearch-sink-1.0.jar /usr/local/hadoop/share/hadoop/yarn
 }
 
 
