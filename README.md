@@ -25,7 +25,7 @@ Vagrant project to spin up a cluster of 6 virtual machines with Hadoop v2.7.1, Z
 
 Some gotcha's.
 
-* Make sure you download Vagrant v1.7.4 or higher and VirtualBox 5.0 or higher with extension package
+* Make sure you download Vagrant v1.7.4 or higher and VirtualBox 5.0 or higher with extension package. If you use Windows 10 and meet issue of "Failed to open/create the internal network 'HostInterfaceNetworking-VirtualBox Host-Only Ethernet Adapter' (VERR_INTNET_FLT_IF_NOT_FOUND).", pleaes refer to following link for solution. http://stackoverflow.com/questions/33725779/failed-to-open-create-the-internal-network-vagrant-on-windows10
 * Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters. If you are using Windows, please make sure the following configuration is configured in your .gitconfig file which is located in your home directory ("C:\Users\yourname" in Win7 and after, and "C:\Documents and Settings\yourname" in WinXP). Refer to http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration for details of git configuration.
 ```
 [core]
@@ -292,7 +292,20 @@ SSH into node2 and run the following commands to start example of NetworkWordCou
 run-example streaming.NetworkWordCount localhost 9999
 ```
 
+The above command line equals to
+
+```
+spark-submit --master local[*] --class org.apache.spark.examples.streaming.NetworkWordCount /usr/local/spark/lib/spark-examples-1.5.2-hadoop2.6.0.jar  localhost 9999
+```
+
+Another example is 
+
+```
+spark-submit --master local[*] --class org.apache.spark.examples.streaming.MeterLoader --jars /usr/local/spark/lib/mahout-examples-0.11.1.jar /usr/local/spark/lib/spark-examples-1.5.2-hadoop2.6.0.jar hdfs://node1:8020/user/root/test
+```
+
 After that go back to first console and type the words to count. Please refer to https://spark.apache.org/docs/latest/streaming-programming-guide.html for more examples and programming guide.
+
 
 ## Run SparkR on YARN
 
