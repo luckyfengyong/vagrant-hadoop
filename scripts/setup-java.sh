@@ -65,7 +65,7 @@ function installMaven {
 		curl -o $FILE -O -L $MAVEN_MIRROR_DOWNLOAD
 	fi
     unzip $FILE -d /usr/local
-    ln -s /usr/local/apache-maven-3.2.5 /usr/local/maven
+    ln -s /usr/local/apache-maven-3.3.9 /usr/local/maven
     ln -s /usr/local/maven/bin/mvn /usr/bin/mvn
 }
 

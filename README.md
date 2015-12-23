@@ -119,7 +119,7 @@ Access http://node2:16030/master-status for HBase admin GUI. Please refer to htt
 
 ### Test HBsae
 
-Run the following commands to make sure you can create hbase table. Refer to http://wiki.apache.org/hadoop/Hbase/Shell for more hbase shell commands
+Run the following commands to make sure you can create hbase table. Refer to http://hbase.apache.org/book.html#shell for more hbase shell commands
 
 ```
 hbase shell
@@ -186,7 +186,7 @@ Run the following commands to make sure you can create hbase table. Refer to htt
 ```
 hbase shell
 hbase(main):001:0> list
-hbase(main):002:0> create 'test','column1'
+hbase(main):002:0> create 'meter','date'
 hbase(main):001:0> list
 ```
 
@@ -298,12 +298,6 @@ The above command line equals to
 spark-submit --master local[*] --class org.apache.spark.examples.streaming.NetworkWordCount /usr/local/spark/lib/spark-examples-1.5.2-hadoop2.6.0.jar  localhost 9999
 ```
 
-Another example is 
-
-```
-spark-submit --master local[*] --class org.apache.spark.examples.streaming.MeterLoader --jars /usr/local/spark/lib/mahout-examples-0.11.1.jar /usr/local/spark/lib/spark-examples-1.5.2-hadoop2.6.0.jar hdfs://node1:8020/user/root/test
-```
-
 After that go back to first console and type the words to count. Please refer to https://spark.apache.org/docs/latest/streaming-programming-guide.html for more examples and programming guide.
 
 
@@ -353,7 +347,7 @@ cp ../scalastyle-config.xml ./ # scalastyle-config.xml is missed from directory 
 ```
 
 ```
-spark-submit --master yarn --class org.apache.spark.examples.streaming.HdfsWordCount /usr/local/src/spark.git/examples/target/spark-examples_2.10-1.5.2.jar /user/root/poc/
+spark-submit --master local[*] --class com.utilismart.datamanager.meterloader.MeterLoader --jars /usr/local/spark/lib/mahout-integration-0.11.1.jar,/usr/local/spark/lib/guava-14.0.1.jar,/usr/local/spark/lib/hbase-common-1.0.0.jar,/usr/local/hbase/lib/hbase-server-1.0.0.jar,/usr/local/hbase/lib/hbase-client-1.0.0.jar,/usr/local/hbase/lib/hbase-protocol-1.0.0.jar,/usr/local/hbase/lib/htrace-core-3.1.0-incubating.jar /usr/local/src/scala.example/src/main/scala/target/meterloader-1.0.jar hdfs://node1:8020/user/root/test
 ```
 
 Please refer to http://spark.apache.org/docs/latest/building-spark.html for more details how to build Spark.
