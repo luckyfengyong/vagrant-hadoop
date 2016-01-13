@@ -1,0 +1,41 @@
+{
+"schemaVersion": "2.1",
+"application": {
+        "name": "NODEJS-REDIS",
+        "components": [
+            {
+                "name": "NODEJS",
+                "type": "docker",
+                "dockerContainers": [
+                    {
+                        "name": "nodejs",
+                        "commandPath": "/usr/bin/docker",
+                        "image": "rsahahw/centos-node-redis",
+                        "ports": [{
+                                "containerPort" : "8000"
+
+                        }]
+                    }
+                ]
+            },
+            {
+                "name": "REDIS",
+                "type": "docker",
+                "dockerContainers": [
+                {
+                        "name": "redis",
+                        "commandPath": "/usr/bin/docker",
+                        "image": "tutum/redis",
+                        "ports": [{
+                                "containerPort" : "6379",
+                                "hostPort": "6379"
+
+                        }]
+
+                }]
+            }
+
+        ]
+    }
+
+}

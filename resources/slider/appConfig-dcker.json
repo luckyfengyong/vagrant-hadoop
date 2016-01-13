@@ -1,0 +1,18 @@
+{
+    "schema": "http://example.org/specification/v2.0.0",
+    "metadata": {
+    },
+    "global": {
+    },
+    "components": {
+            "NODEJS": {
+                "nodejs.commandPath": "/user/local/bin/docker", 
+                "nodejs.options":"-d -e REDIS_HOST=${REDIS_HOST} --net=host",
+                "nodejs.statusCommand":"docker inspect -f {{.State.Running}} ${CONTAINER_ID} | grep true"
+            },
+            "REDIS": {
+                "redis.options":"-d -e REDIS_PASS=**None**",
+                "redis.statusCommand":"docker top ${CONTAINER_ID} | grep redis-server"
+            }
+    }
+}

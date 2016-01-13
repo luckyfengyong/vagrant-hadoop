@@ -1,0 +1,18 @@
+{
+    "schema": "http://example.org/specification/v2.0.0", 
+    "metadata": { }, 
+    "global": { }, 
+    "components": {
+        "slider-appmaster": { }, 
+        "REDIS": {
+            "yarn.role.priority": "1", 
+            "yarn.component.instances": "1", 
+            "yarn.memory": "512"
+        }, 
+        "NODEJS": {
+            "yarn.role.priority": "2", 
+            "yarn.component.instances": "1", 
+            "yarn.memory": "512"
+        }
+    }
+}
